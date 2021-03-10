@@ -1,0 +1,37 @@
+        delegate int tr(int x);
+        delegate int del(int x, int y);
+        delegate void ptr(int x);
+        delegate void Action();
+        
+         static void Main(string[] args)
+        {
+        tr sqare = x => x * x;
+            Console.WriteLine(sqare(5));
+            del myf = (a, b) => a + b;
+            int v1 = myf(10, 5);
+            del myf2 = (a, b) => a * b;
+            int v2 = myf2(5, 10);
+            Console.WriteLine(v1 + " " + v2);
+
+            ptr p = (x) => Console.WriteLine(x);
+            p.Invoke(123);
+            System.Action<int> obA = null;
+            obA = x => { Console.WriteLine(x + x); };
+            obA(10);
+
+            Func<int, int, int> obF = (x, y) => 2 * x + 4 * y;
+            Console.WriteLine(obF(10, 20));
+
+            obF = (a, b) => { if (a > b) return 1; else return a + b; };
+            Console.WriteLine(obF(20, 10));
+
+            Array.Sort(d ,(a, b) => a.val.CompareTo(b.val));
+            for (int x = 0; x != d.Length; x++)
+            {
+                Console.WriteLine(d[x].val);
+            }
+            Console.WriteLine();
+            var lsd = new List<int> { 1, 2, 3, 4 };
+            lsd.ForEach(x => Console.WriteLine(x));
+            Console.WriteLine(lsd.FindIndex(x => x % 5 == 0));
+        }
