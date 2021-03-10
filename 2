@@ -1,0 +1,38 @@
+public class KeyVal
+    {
+        public int key;
+        public int val;
+
+        public KeyVal(int a,int b)
+        {
+            key = a;
+            val = b;
+        }
+    }
+    
+        public class MyComp : IComparer<KeyVal>
+    {
+        public int Compare(KeyVal x, KeyVal y)
+        {
+            return x.val < y.val ? -1 : 1;
+        }
+
+    }
+    
+    
+    static void Main(string[] args)
+    {
+     var d = new KeyVal[5];
+            d[0] = new KeyVal(2, 1);
+            d[1] = new KeyVal(3, 5);
+            d[2] = new KeyVal(4, 3);
+            d[3] = new KeyVal(5, 8);
+            d[4] = new KeyVal(6, 0);
+
+            Array.Sort(d, 0, 5,new MyComp());
+            for(int x=0;x!=d.Length;x++)
+            {
+                Console.WriteLine(d[x].val);
+            }
+     }
+    
